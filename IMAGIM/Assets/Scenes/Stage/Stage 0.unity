@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 675624323}
   - component: {fileID: 675624322}
   - component: {fileID: 675624321}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -579,7 +579,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -33.746, y: 156}
+  m_AnchoredPosition: {x: -570, y: 455}
   m_SizeDelta: {x: 616.5073, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1387052999
@@ -809,7 +809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  attackRange: 0.28
+  attackRange: 2.2
   attackDelay: 2
   enemyInArea: 0
   attackPosition: {fileID: 1515206862}
@@ -874,8 +874,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1580163922}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 64.7, y: 1.1, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 0.84086806}
+  m_LocalPosition: {x: 64.7, y: 0.41, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 0.8}
   m_Children:
   - {fileID: 1515206862}
   m_Father: {fileID: 0}
@@ -893,7 +893,7 @@ GameObject:
   - component: {fileID: 1587876781}
   m_Layer: 0
   m_Name: Tower
-  m_TagString: Tower
+  m_TagString: AllyTower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -939,7 +939,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 1}
+  m_Color: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -957,7 +957,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1587876780}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.4, y: 10.6919, z: 0}
+  m_LocalPosition: {x: -22.4, y: 10.53, z: 0}
   m_LocalScale: {x: 14.917955, y: 30.822245, z: 0.84086806}
   m_Children: []
   m_Father: {fileID: 0}

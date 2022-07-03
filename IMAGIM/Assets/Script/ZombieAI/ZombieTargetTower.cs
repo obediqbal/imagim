@@ -9,7 +9,7 @@ public class ZombieTargetTower : ZombieBaseState
 
     public override void OnEnter(ZombieController zombie)
     {
-        tower = GameObject.FindGameObjectWithTag("Tower").transform;
+        tower = GameObject.FindWithTag("AllyTower").transform;
         rb = zombie.GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player").transform;
     }
@@ -19,6 +19,7 @@ public class ZombieTargetTower : ZombieBaseState
         {
             float distanceToTower = tower.position.x - zombie.transform.position.x;
             Vector3 direction = distanceToTower < 0 ? Vector3.left : Vector3.right;
+            zombie.transform.localScale = direction.x < 0 ? new Vector3(5, 5, 1) : new Vector3(-5, 5, 1);
 
             rb.velocity = direction * zombie.speed;
         }
