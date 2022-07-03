@@ -223,7 +223,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 128, y: -64}
+  m_AnchoredPosition: {x: 125, y: -90.975006}
   m_SizeDelta: {x: 80, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &238656796
@@ -702,7 +702,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -3.437}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 128, y: 60}
+  m_AnchoredPosition: {x: 133, y: 84.975}
   m_SizeDelta: {x: 140, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &566983308
@@ -991,8 +991,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -242, y: -3}
-  m_SizeDelta: {x: 202.36, y: 215.95}
+  m_AnchoredPosition: {x: -204, y: -8}
+  m_SizeDelta: {x: 202.35999, y: 215.95001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1532775169
 MonoBehaviour:
@@ -1102,8 +1102,8 @@ GameObject:
   - component: {fileID: 1601903077}
   - component: {fileID: 1601903076}
   - component: {fileID: 1601903075}
-  - component: {fileID: 1601903078}
   - component: {fileID: 1601903079}
+  - component: {fileID: 1601903078}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -1225,23 +1225,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1601903073}
   m_CullTransparentMesh: 1
---- !u!114 &1601903078
-MonoBehaviour:
+--- !u!95 &1601903078
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1601903073}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc06cc984eb4dd6478f0f14dd0bb33a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playButton: {fileID: 0}
-  settingsButton: {fileID: 0}
-  creditsButton: {fileID: 0}
-  gameTitle: {fileID: 566983306}
-  gameLogo: {fileID: 238656794}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 77196823dad87064d9ca94b1b4e6473a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!61 &1601903079
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -15,6 +15,10 @@ public class ZombieController : MonoBehaviour
     public ZombieTargetClosest TargetClosest = new ZombieTargetClosest();
     public ZombieAttacking Attacking = new ZombieAttacking();
 
+    [SerializeField] Animator animator;
+    private bool isChasing = true;
+    private float move;
+
     private void Start() {
         currentState = TargetTower;
         currentState.OnEnter(this);
@@ -23,6 +27,16 @@ public class ZombieController : MonoBehaviour
     private void Update() {
         currentState.Update(this);
         stateText.text = "Active State: " + currentState.GetType().Name;
+        move = Input.GetAxisRaw("Horizontal");
+        animator.SetFloat("Horizontal", move);
+        if (move == 0)
+        {
+            animator.SetBool("isMoving", false);
+        }
+        else
+        {
+            animator.SetBool("isMoving", true);
+        }
     }
 
     public void SwitchState(ZombieBaseState state){

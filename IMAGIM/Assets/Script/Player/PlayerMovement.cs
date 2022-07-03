@@ -3,23 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Movement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb;
     BoxCollider2D box;
-    public float moveSpeed = 1f;
-    public float jumpStrength = 1f;
-    public bool Opposite;
-    public Vector2 move;
-    public Animator animator;
+    [SerializeField] float moveSpeed = 1f;
+    [SerializeField] float jumpStrength = 1f;
+    [SerializeField] bool Opposite;
+    private Vector2 move;
+    [SerializeField] Animator animator;
     SpriteRenderer sprite;
     float movex, movey;
     [SerializeField] private LayerMask platformlayer;
-    public float grounddistance;
+    public float grounddistance = 3f;
     private float currentGap;
     Vector3 lastpos;
-
-    // Start is called before the first frame update
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
@@ -92,22 +90,27 @@ public class Movement : MonoBehaviour
     // Ground Check
     bool isGrounded()
     {
-        RaycastHit2D boxcast = Physics2D.BoxCast(box.bounds.center, new Vector2(0.95f * box.bounds.size.x, box.bounds.size.y), 0f, Vector2.down, grounddistance, platformlayer);
+        RaycastHit2D boxcast = Physics2D.BoxCast(box.bounds.center, new Vector2(0.45f * box.bounds.size.x, 0.45f * box.bounds.size.y), 0f, Vector2.down, grounddistance, platformlayer);
         Debug.Log(boxcast.collider);
         return boxcast.collider != null;
     }
 
     bool isMentokKanan()
     {
-        RaycastHit2D boxcast = Physics2D.BoxCast(box.bounds.center, new Vector2(0.95f * box.bounds.size.x, box.bounds.size.y), 0f, Vector2.right, grounddistance, platformlayer);
+        RaycastHit2D boxcast = Physics2D.BoxCast(box.bounds.center, new Vector2(0.45f * box.bounds.size.x, box.bounds.size.y), 0f, Vector2.right, grounddistance, platformlayer);
         Debug.Log(boxcast.collider);
         return boxcast.collider != null;
     }
 
     bool isMentokKiri()
     {
-        RaycastHit2D boxcast = Physics2D.BoxCast(box.bounds.center, new Vector2(0.95f * box.bounds.size.x, box.bounds.size.y), 0f, Vector2.left, grounddistance, platformlayer);
+        RaycastHit2D boxcast = Physics2D.BoxCast(box.bounds.center, new Vector2(0.45f * box.bounds.size.x, box.bounds.size.y), 0f, Vector2.left, grounddistance, platformlayer);
         Debug.Log(boxcast.collider);
         return boxcast.collider != null;
     }
+
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.DrawWireCube(transform.position, new Vector2(0.45f * box.bounds.size.x, box.bounds.size.y));
+    //}
 }
