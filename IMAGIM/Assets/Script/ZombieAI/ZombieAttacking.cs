@@ -5,20 +5,19 @@ using UnityEngine;
 public class ZombieAttacking : ZombieBaseState
 {
     Rigidbody2D rb;
+    Animator animator;
     bool isAttacking = false;
     
     public override void OnEnter(ZombieController zombie)
     {
         rb = zombie.GetComponent<Rigidbody2D>();
-        // attack animation
-        // ...
-
-        // do attack
+        animator = zombie.GetComponent<Animator>();
         zombie.StartCoroutine(Attack(zombie));
     }
 
     IEnumerator Attack(ZombieController zombie)
     {
+        animator.SetBool("inCombat", true);
         isAttacking = true;
         yield return new WaitForSeconds(zombie.attackDelay);
         Collider2D hitEnemy = Physics2D.OverlapCircle(zombie.attackPosition.position, zombie.attackRange, LayerMask.GetMask("Ally"));
@@ -30,6 +29,7 @@ public class ZombieAttacking : ZombieBaseState
         }
 
         isAttacking = false;
+        animator.SetBool("inCombat", false);
         zombie.SwitchState(zombie.TargetClosest);
     }
 

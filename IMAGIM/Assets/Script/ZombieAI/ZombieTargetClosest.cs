@@ -41,7 +41,8 @@ public class ZombieTargetClosest : ZombieBaseState
         {
             float distanceToTarget = target.position.x - zombie.transform.position.x;
             Vector3 direction = distanceToTarget < 0 ? Vector3.left : Vector3.right;
-            zombie.transform.localScale = direction.x < 0 ? new Vector3(5, 5, 1) : new Vector3(-5, 5, 1);
+            zombie.xOrientation = direction.x;
+            zombie.transform.localScale = zombie.xOrientation < 0 ? new Vector3(-5, 5, 1) : new Vector3(5, 5, 1);
 
             rb.velocity = direction * zombie.speed;
         }

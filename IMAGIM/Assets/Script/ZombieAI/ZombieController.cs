@@ -8,8 +8,8 @@ public class ZombieController : MonoBehaviour
     ZombieBaseState currentState;
     public float speed, attackRange, attackDelay;
     [HideInInspector] public int enemyInArea = 0;
+    [HideInInspector] public float xOrientation;
     public Transform attackPosition;
-    public TextMeshProUGUI stateText;
 
     public ZombieTargetTower TargetTower = new ZombieTargetTower();
     public ZombieTargetClosest TargetClosest = new ZombieTargetClosest();
@@ -27,7 +27,6 @@ public class ZombieController : MonoBehaviour
 
     private void Update() {
         currentState.Update(this);
-        stateText.text = "Active State: " + currentState.GetType().Name;
         move = rb.velocity.x;
         if (move == 0)
         {
