@@ -6,8 +6,9 @@ namespace Assets.Sandbox.Josh.Scripts
 {
     public class GameDataHolder : MonoBehaviour
     {
-        public ResourceSO[] Resources;
-        public GameData GameData;
+        [SerializeField]
+        private ResourceSO[] Resources;
+        private GameData GameData;
         private void Awake()
         {
             for (int i = 0; i < Resources.Length; i++)

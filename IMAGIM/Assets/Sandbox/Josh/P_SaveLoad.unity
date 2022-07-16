@@ -413,8 +413,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Resources:
   - {fileID: 11400000, guid: 1bd3ae78d1cc8f84eb82f6048098ba05, type: 2}
-  GameData:
-    ResourceValues: []
 --- !u!114 &341004726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,7 +426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugText: {fileID: 190797566}
-  dataHolder: {fileID: 341004725}
+  coin: {fileID: 11400000, guid: 1bd3ae78d1cc8f84eb82f6048098ba05, type: 2}
 --- !u!1 &857788130
 GameObject:
   m_ObjectHideFlags: 0

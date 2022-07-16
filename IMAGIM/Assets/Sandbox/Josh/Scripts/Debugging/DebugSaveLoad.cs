@@ -7,18 +7,18 @@ namespace Assets.Sandbox.Josh.Scripts
     public class DebugSaveLoad : MonoBehaviour
     {
         public Text debugText;
-        public GameDataHolder dataHolder;
+        public ResourceSO coin;
         private void Update()
         {
-            debugText.text = dataHolder.Resources[0].GetValue().ToString();
+            debugText.text = coin.GetValue().ToString();
         }
         public void debugAdd()
         {
-            dataHolder.Resources[0].AddValue(1);
+            coin.AddValue(1);
         }
         public void debugRemove()
         {
-            dataHolder.Resources[0].AddValue(-1);
+            coin.AddValue(-1);
         }
     }
 }
