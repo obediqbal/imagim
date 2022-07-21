@@ -16,11 +16,11 @@ public class EnemySpawnManager : MonoBehaviour
 
     void StartSpawning(){
         foreach(EnemySpawner spawner in spawners){
-            spawnerCoroutine = StartCoroutine(Spawn(spawner));
+            spawnerCoroutine = StartCoroutine(EnemySpawn(spawner));
         }
     }
 
-    IEnumerator Spawn(EnemySpawner spawner){
+    IEnumerator EnemySpawn(EnemySpawner spawner){
         if (firstSpawn)
         {
             yield return new WaitForSeconds(spawner.delayToFirstSpawn);
@@ -34,7 +34,7 @@ public class EnemySpawnManager : MonoBehaviour
 
         firstSpawn = false;
         if (spawner.spawnInfinitely) {
-            spawnerCoroutine = StartCoroutine(Spawn(spawner));
+            spawnerCoroutine = StartCoroutine(EnemySpawn(spawner));
         }
     }
 }
