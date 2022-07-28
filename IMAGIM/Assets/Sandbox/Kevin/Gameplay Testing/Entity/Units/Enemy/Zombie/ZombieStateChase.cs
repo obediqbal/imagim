@@ -2,31 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieTargetClosest : ZombieBaseState
+[AddComponentMenu(menuName: "Game Units/Enemy/Zombie/State/State: Chase")]
+public class ZombieStateChase : ZombieStateManager
 {   
     Transform target, player;
     Rigidbody2D rb;
 
-    public override void OnEnter(ZombieController zombie)
+    public override void OnEnter(ZombieUnit zombie)
     {
         player = GameObject.FindWithTag("Player").transform;
         rb = zombie.GetComponent<Rigidbody2D>();
-
-        ChangeTarget(player);
+        ChangeTarget(zombie.lockedEnemy);
     }
-    public override void OnTriggerEnter2D(ZombieController zombie, Collider2D collider)
+    public override void OnTriggerEnter2D(ZombieUnit zombie, Collider2D collider)
     {
-        if (collider.tag == "Player") // Or any deployable units
+        if (collider.CompareTag("Player") || (collider.CompareTag("Ally"))) // Or any deployable units
         {
             zombie.enemyInArea += 1;
+            if (zombie.lockedEnemy == null)
+            {
+                zombie.lockedEnemy = collider.transform;
+            }
+            zombie.enemiesInRange.Add(collider.transform);
         }
     }
 
-    public override void OnTriggerExit2D(ZombieController zombie, Collider2D collider)
+    public override void OnTriggerExit2D(ZombieUnit zombie, Collider2D collider)
     {
-        if (collider.tag == "Player") // Or any deployable units
+        if (collider.CompareTag("Player") || (collider.CompareTag("Ally"))) // Or any deployable units
         {
             zombie.enemyInArea -= 1;
+            if (zombie.lockedEnemy == collider.transform)
+            {
+                zombie.RetargetEnemy();
+            }
+            zombie.enemiesInRange.Remove(collider.transform);
+            if (zombie.enemiesInRange.Count > 0)
+            {
+                zombie.lockedEnemy = zombie.enemiesInRange[0];
+
+            }
+            else
+            {
+                zombie.RetargetEnemy();
+            }
         }
     }
 
@@ -35,7 +54,7 @@ public class ZombieTargetClosest : ZombieBaseState
         target = _target;
     }
 
-    void ChaseTarget(ZombieController zombie)
+    void ChaseTarget(ZombieUnit zombie)
     {
         if (target != null)
         {
@@ -48,7 +67,7 @@ public class ZombieTargetClosest : ZombieBaseState
         }
     }
 
-    public override void Update(ZombieController zombie)
+    public override void Update(ZombieUnit zombie)
     {
         if (zombie.enemyInArea == 0)
         {
@@ -63,7 +82,7 @@ public class ZombieTargetClosest : ZombieBaseState
         ChaseTarget(zombie);
     }
 
-    bool OnAttackRange(ZombieController zombie)
+    bool OnAttackRange(ZombieUnit zombie)
     {
         Collider2D hitEnemy = Physics2D.OverlapCircle(zombie.attackPosition.position, 0.5f * zombie.attackRange, LayerMask.GetMask("Ally"));
         if (hitEnemy != null)

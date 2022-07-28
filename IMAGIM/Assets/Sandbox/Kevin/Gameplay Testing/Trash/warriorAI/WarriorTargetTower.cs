@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class WarriorTargetTower : WarriorBaseState
 {
-    Transform tower, player;
+    Transform tower, enemy;
     Rigidbody2D rb;
 
     public override void OnEnter(WarriorController warrior)
     {
         tower = GameObject.FindWithTag("EnemyTower").transform;
         rb = warrior.GetComponent<Rigidbody2D>();
-        player = GameObject.FindWithTag("Enemy").transform;
+        enemy = GameObject.FindWithTag("Enemy").transform;
     }
     public override void Update(WarriorController warrior)
     {

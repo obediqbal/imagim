@@ -205,7 +205,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 374001278}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1875125772}
+        m_TargetAssemblyTypeName: AllySpawnManager, Assembly-CSharp
+        m_MethodName: StartSpawning
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &374001278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,7 +338,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 422963074}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1875125772}
+        m_TargetAssemblyTypeName: AllySpawnManager, Assembly-CSharp
+        m_MethodName: StartSpawning
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &422963074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,7 +546,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 505262465}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1875125772}
+        m_TargetAssemblyTypeName: AllySpawnManager, Assembly-CSharp
+        m_MethodName: StartSpawning
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &505262465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37978,7 +38014,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 886501832}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1875125772}
+        m_TargetAssemblyTypeName: AllySpawnManager, Assembly-CSharp
+        m_MethodName: StartSpawning
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &886501832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38212,7 +38260,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1100173665}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1875125772}
+        m_TargetAssemblyTypeName: AllySpawnManager, Assembly-CSharp
+        m_MethodName: StartSpawning
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1100173665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39218,9 +39278,9 @@ MonoBehaviour:
     timeBetweenSpawn: 3
     delayToFirstSpawn: 5
     enemySpawned:
-    - enemyPrefab: {fileID: 7695014476066728925, guid: 18b75d10b51ad734c8be6d15a5f9ab99, type: 3}
+    - enemyPrefab: {fileID: 2830167554404878682, guid: f9466c4fa0ac7a44a96241cce4a1459a, type: 3}
       delayToNextSpawn: 5
-    - enemyPrefab: {fileID: 7695014476066728925, guid: 18b75d10b51ad734c8be6d15a5f9ab99, type: 3}
+    - enemyPrefab: {fileID: 2830167554404878682, guid: f9466c4fa0ac7a44a96241cce4a1459a, type: 3}
       delayToNextSpawn: 9
   enemiesParent: {fileID: 981205627}
 --- !u!4 &1875125771
@@ -39251,14 +39311,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4142a7030435ce47bb0ae525ce5a909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawners:
-  - spawnPoint: {fileID: 1362966231}
-    spawnInfinitely: 1
-    spawnAtConstantTime: 0
-    timeBetweenSpawn: 3
-    delayToFirstSpawn: 5
-    allySpawned: []
+  ally:
+    allyWarrior: {fileID: 4433925344250786260, guid: 50e022629cea32240ab78e3024f12666, type: 3}
   alliesParent: {fileID: 841076562}
+  spawnPoint: {fileID: 1362966231}
 --- !u!1 &2140549090
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,18 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieTargetTower : ZombieBaseState
+[AddComponentMenu(menuName: "Game Units/Enemy/Zombie/State/State: Tower")]
+public class ZombieStateTower : ZombieStateManager
 {
     Transform tower, player;
     Rigidbody2D rb;
 
-    public override void OnEnter(ZombieController zombie)
+    public override void OnEnter(ZombieUnit zombie)
     {
         tower = GameObject.FindWithTag("AllyTower").transform;
         rb = zombie.GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player").transform;
     }
-    public override void Update(ZombieController zombie)
+    public override void Update(ZombieUnit zombie)
     {
         if (tower != null)
         {
@@ -27,16 +28,21 @@ public class ZombieTargetTower : ZombieBaseState
     }
 
 
-    public override void OnTriggerEnter2D(ZombieController zombie, Collider2D collider)
+    public override void OnTriggerEnter2D(ZombieUnit zombie, Collider2D collider)
     {
-        if (collider.tag == "Player") // Or any deployable units
+        if (collider.CompareTag("Player") || (collider.CompareTag("Ally"))) // Or any deployable units
         {
             zombie.enemyInArea += 1;
+            if (zombie.lockedEnemy == null)
+            {
+                zombie.lockedEnemy = collider.transform;
+            }
+            zombie.enemiesInRange.Add(collider.transform);
             zombie.SwitchState(zombie.TargetClosest);
         }
     }
 
-    public override void OnTriggerExit2D(ZombieController zombie, Collider2D collider)
+    public override void OnTriggerExit2D(ZombieUnit zombie, Collider2D collider)
     {
     }
 
