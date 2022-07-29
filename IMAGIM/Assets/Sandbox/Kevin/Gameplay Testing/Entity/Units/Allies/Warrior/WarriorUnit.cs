@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 
 [AddComponentMenu(menuName: "Game Units/Allies/Warrior/Warrior")]
-public class WarriorUnit : MonoBehaviour
+public class WarriorUnit : Unit
 {
     WarriorStateManager currentState;
     public Transform lockedEnemy;
@@ -24,6 +24,7 @@ public class WarriorUnit : MonoBehaviour
 
     private void Start()
     {
+        SetMaxHealth(100);
         rb = GetComponent<Rigidbody2D>();
         currentState = TargetTower;
         currentState.OnEnter(this);

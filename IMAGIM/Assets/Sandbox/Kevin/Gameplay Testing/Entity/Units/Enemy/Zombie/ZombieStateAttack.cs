@@ -22,10 +22,14 @@ public class ZombieStateAttack : ZombieStateManager
         isAttacking = true;
         yield return new WaitForSeconds(zombie.attackDelay);
         Collider2D hitEnemy = Physics2D.OverlapCircle(zombie.attackPosition.position, zombie.attackRange, LayerMask.GetMask("Ally"));
-        if (hitEnemy != null)
+        IDamagable damagable = hitEnemy.GetComponent<IDamagable>();
+        if (hitEnemy != null && damagable != null)
         {
             Debug.Log("Hit enemy : " + hitEnemy.name);
-        } else {
+            damagable.TakeDamage(20);
+        } 
+        else 
+        {
             Debug.Log("Attack Missed");
         }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 
 [AddComponentMenu(menuName: "Game Units/Enemy/Zombie/Zombie")]
-public class ZombieUnit : MonoBehaviour
+public class ZombieUnit : Unit
 {
     ZombieStateManager currentState;
     public Transform lockedEnemy;
@@ -24,6 +24,7 @@ public class ZombieUnit : MonoBehaviour
 
     private void Start()
     {
+        SetMaxHealth(100);
         rb = GetComponent<Rigidbody2D>();
         currentState = TargetTower;
         currentState.OnEnter(this);
