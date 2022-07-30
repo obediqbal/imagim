@@ -42,6 +42,10 @@ public class ZombieUnit : Unit
         {
             animator.SetBool("isMoving", true);
         }
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void SwitchState(ZombieStateManager state)
