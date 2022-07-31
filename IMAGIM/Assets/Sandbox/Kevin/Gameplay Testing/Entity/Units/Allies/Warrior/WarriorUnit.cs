@@ -42,7 +42,7 @@ public class WarriorUnit : Unit
         {
             animator.SetBool("isMoving", true);
         }
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }

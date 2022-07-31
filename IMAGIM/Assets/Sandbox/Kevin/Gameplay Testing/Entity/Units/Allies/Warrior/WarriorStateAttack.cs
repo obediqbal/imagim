@@ -22,12 +22,16 @@ public class WarriorStateAttack : WarriorStateManager
         isAttacking = true;
         yield return new WaitForSeconds(warrior.attackDelay);
         Collider2D hitEnemy = Physics2D.OverlapCircle(warrior.attackPosition.position, warrior.attackRange, LayerMask.GetMask("Ally"));
-        IDamagable damagable = hitEnemy.GetComponent<IDamagable>();
-        if (hitEnemy != null && damagable != null)
+        if (hitEnemy != null)
         {
             Debug.Log("Hit enemy : " + hitEnemy.name);
-            damagable.TakeDamage(20);
-        } 
+            IDamagable damagable = hitEnemy.GetComponent<IDamagable>();
+            if (damagable != null)
+            {
+                Debug.Log("Hit enemy : " + hitEnemy.name);
+                damagable.TakeDamage(20);
+            }
+        }
         else
         {
             Debug.Log("Attack Missed");

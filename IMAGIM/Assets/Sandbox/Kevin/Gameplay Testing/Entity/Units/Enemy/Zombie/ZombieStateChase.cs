@@ -32,7 +32,7 @@ public class ZombieStateChase : ZombieStateManager
         if (collider.CompareTag("Player") || (collider.CompareTag("Ally"))) // Or any deployable units
         {
             zombie.enemyInArea -= 1;
-            if (zombie.lockedEnemy == collider.transform)
+            if (zombie.lockedEnemy == collider.transform || zombie.lockedEnemy.gameObject.activeInHierarchy == false)
             {
                 zombie.RetargetEnemy();
             }

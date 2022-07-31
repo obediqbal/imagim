@@ -32,7 +32,7 @@ public class WarriorStateChase : WarriorStateManager
         if (collider.CompareTag("Player") || (collider.CompareTag("Ally"))) // Or any deployable units
         {
             warrior.enemyInArea -= 1;
-            if (warrior.lockedEnemy == collider.transform)
+            if (warrior.lockedEnemy == collider.transform || warrior.lockedEnemy.gameObject.activeInHierarchy == false)
             {
                 warrior.RetargetEnemy();
             }

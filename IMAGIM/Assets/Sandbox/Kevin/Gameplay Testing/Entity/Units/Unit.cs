@@ -30,12 +30,14 @@ public class Unit : Entity
 
     public override void SetMaxHealth(float maxHealth)
     {
+        currentHealth = maxHealth;
         slider.maxValue = maxHealth;
         slider.value = maxHealth;
     }
 
     public override void SetHealth(float health)
     {
+        currentHealth = health;
         slider.value = health;
     }
 }
