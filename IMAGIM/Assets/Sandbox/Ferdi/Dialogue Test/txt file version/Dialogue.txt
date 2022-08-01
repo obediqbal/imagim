@@ -1,0 +1,16 @@
+[NAME=???]test
+
+[NAME=Ferdi] ini ngetes dialogue kalo pake txt file
+
+bikinnya pake txt file biar kalo banyak ga terlalu susah masukinnya di unity, bisa copas sini
+
+(mungkin)
+
+buat ngisinya di txt filenya, ngikutin formatnya
+
+buat pemakaiannya di cutscene bakal disesuaiin sama story dan pemikiran cutscene dari game design
+
+entah ingame bisa interact buat ada dialog, ato bikin scene khusus buat cutscene
+
+mangga dicoba
+
