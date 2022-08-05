@@ -1,16 +1,52 @@
+// Welcome to contoh penggunaan dialog pake txt
+
+// Buat pakenya, di scene unity perlu ada DialogueManager sama DialogueTrigger
+// Text file berisi dialognya bakal ditaro di object yang dikasih script DialogueTrigger
+// Bisa diliat juga di scene testingnya di Sandbox/Ferdi/Dialogue Test/txt file version
+
+// Format penulisan umum : [{visuals}]{dialogue}
+//						   [{visual1}][{visual2}]...{dialogue}
+// Urutan penulisan untuk visuals : SETTING -> NAME -> CHAR
+// Formatnya perlu urut kalo ada lebih dari satu [{visuals}] dalem satu line
+
+// SETTING = setting/latar background, latar bakal ditaro di Canvas/Backgrounds terus nanti diaktifkan kalo dipanggil lewat ini
+// penulisan: [SETTING={latarnya}]
+
+// NAME = nama character yg ngomong, text tempat nama bakal ganti sesuai yg dipanggil di sini
+// penulisan: [NAME={nama char}]
+
+// CHAR = gambar character yg ngomong, gambar2 ditaro di Canvas/Character Portraits, kerjanya mirip yang setting dengan tambahan posisi
+// penulisan: [CHAR={nama char}_{tampilan(siluet, happy, sad, dll)}_{alignment(left,right,middle}]
+
+// ANIM = animasi character yg ngomong (masih WIP)
+
+// Kalo butuh contoh penulisannya bisa liat yg ada di file ini
+// Barangkali perlu naro2 comment bisa pake tanda // kayak semua di atas ini
+
+// Programnya sekarang masih belom lengkap dan masih ada beberapa bug pas dipake di unity
+// Known Bugs:
+// - ga bisa 3 [{visuals}] dalam satu line
+// - penulisan 2 [{visuals}] dalam satu line harus khusus(sebelum {dialogue} harus ada satu spasi)
+// - CHAR kalo di lebih dari satu visual masih ngebug
+// Kalo ada nemu lagi boleh kasih tau aku di discord
+// Buat ngerjainnya bisa ngikutin format umumnya, kalo buat ngetes nanti ngikutin list bug nya
+
 [NAME=???]test
 
-[NAME=Ferdi] ini ngetes dialogue kalo pake txt file
+[SETTING=Blue][NAME=Ferdi] testes
+
+ini ngetes dialogue kalo pake txt file
 
 bikinnya pake txt file biar kalo banyak ga terlalu susah masukinnya di unity, bisa copas sini
 
 (mungkin)
 
-buat ngisinya di txt filenya, ngikutin formatnya
+[SETTING=White]buat ngisinya di txt filenya, ngikutin format di dalem filenya
 
 buat pemakaiannya di cutscene bakal disesuaiin sama story dan pemikiran cutscene dari game design
 
 entah ingame bisa interact buat ada dialog, ato bikin scene khusus buat cutscene
 
-mangga dicoba
+[CHAR=Uhh_Fallen_right]semoga aman
 
+[CHAR=Teriri_Dumb_right]mangga dicoba

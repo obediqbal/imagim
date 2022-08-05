@@ -19,6 +19,7 @@ public class DialogueTrigger : MonoBehaviour
             TriggerDialogue();
         }
     }
+
     void TriggerDialogue()
     {
         ReadTextFile();
@@ -32,12 +33,18 @@ public class DialogueTrigger : MonoBehaviour
 
         foreach (string line in lines)
         {
-            if (!string.IsNullOrEmpty(line))
+            if (!string.IsNullOrEmpty(line) && !line.StartsWith("//"))
             {
                 if (line.StartsWith("["))
                 {
                     string special = line.Substring(0, line.IndexOf("]") + 1);
                     string curr = line.Substring(line.IndexOf("]") + 1);
+                    while (curr.Contains("["))
+                    {
+                        dialogue.Enqueue(special);
+                        special = curr.Substring(0, line.IndexOf("]") + 1);
+                        curr = curr.Substring(line.IndexOf("]"));
+                    }
                     dialogue.Enqueue(special);
                     dialogue.Enqueue(curr);
                 } 
@@ -47,7 +54,7 @@ public class DialogueTrigger : MonoBehaviour
                 }
             }
         }
-        dialogue.Enqueue("EndQueue");
+        dialogue.Enqueue("ENDQUEUE");
     }
 
 
