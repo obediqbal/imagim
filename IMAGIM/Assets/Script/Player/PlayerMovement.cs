@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Unit
 {
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float acceleration = 4f;

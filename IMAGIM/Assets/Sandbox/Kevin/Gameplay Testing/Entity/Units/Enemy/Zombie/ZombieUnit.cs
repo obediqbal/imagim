@@ -64,7 +64,7 @@ public class ZombieUnit : Unit
         currentState.OnTriggerExit2D(this, collider);
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(attackPosition.position, attackRange);
