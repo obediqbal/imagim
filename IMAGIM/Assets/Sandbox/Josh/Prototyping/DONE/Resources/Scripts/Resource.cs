@@ -7,7 +7,7 @@ namespace DKH.ResourceSystem
     /// <summary>
     /// Represents a resource with displayname and description for UI that has a value.
     /// </summary>
-    [CreateAssetMenu(fileName = "Resource", menuName = "ScriptableObjects/Resource")]
+    [CreateAssetMenu(fileName = "Resource", menuName = "SO/Resource")]
     public class Resource : ScriptableObject
     {
         public string DisplayName;
