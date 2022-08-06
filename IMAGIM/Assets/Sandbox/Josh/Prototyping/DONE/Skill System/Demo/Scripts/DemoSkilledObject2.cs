@@ -29,7 +29,7 @@ namespace DKH.Debugging
         }
 
         /// <summary>
-        /// Default ExecuteSkill calls skill execution on the skill, can have conditionals to check if the character is stunned or etc.
+        /// Default ExecuteSkill method calls skill execution on the skill, can have conditionals to check if the character is stunned or etc.
         /// </summary>
         public void ExecuteSkill(SkillBase skill)
         {

@@ -11,7 +11,16 @@ namespace DKH.SkillSystem
         public string DisplayName;
         public string Description;
         public float Cooldown;
+        /// <summary>
+        /// The type of SkillData the skill should have
+        /// </summary>
+        /// <remarks>This will later be casted to the class SkillData</remarks>
         public abstract Type SkillData { get; }
-        public abstract void ExecuteAs(ISkillable executor);
+        /// <summary>
+        /// Executes the skill and returns true if the execution is successful
+        /// </summary>
+        /// <param name="executor">The object to execute the skill</param>
+        /// <returns>True if success</returns>
+        public abstract bool ExecuteAs(ISkillable executor);
     }
 }

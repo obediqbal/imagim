@@ -11,16 +11,17 @@ namespace DKH.Debugging
     {
         public override Type SkillData => typeof(DemoDebugLogSkillData);
 
-        public override void ExecuteAs(ISkillable executor)
+        public override bool ExecuteAs(ISkillable executor)
         {
             DemoDebugLogSkillData data = (DemoDebugLogSkillData)executor.GetSkillData(this);
             if (data.Cooldown > 0)
             {
                 Debug.Log($"{executor} failed to cast skill ({Mathf.Round(data.Cooldown * 10f) / 10f})s remaining");
-                return;
+                return false;
             }
             data.Cooldown = Cooldown;
             Debug.Log(executor + " casted skill");
+            return true;
         }
     }
 
