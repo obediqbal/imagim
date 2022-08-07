@@ -7,6 +7,7 @@ public class PlayerAttack : MonoBehaviour
     private float attackAnimationDelay = 0.07f;
     [SerializeField] private float attackCooldown = 0.5f;
     [SerializeField] private float attackRadius = 0.5f;
+    [SerializeField] private float attackDamage = 20f;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private LayerMask enemyLayers;
     private bool canAttack = true;
@@ -30,19 +31,21 @@ public class PlayerAttack : MonoBehaviour
         canAttack = true;
     }
 
-    private void DoAttack() {
-        Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, enemyLayers);
-        if (enemiesToDamage.Length > 0) {
-            foreach (Collider2D enemy in enemiesToDamage) {
-                Debug.Log("We hit " + enemy.name);
+    private void DoAttack() 
+    {
+        RaycastHit2D enemiesToDamage = Physics2D.CircleCast(attackPoint.position, attackRadius, Vector2.zero, 0, enemyLayers);
+        if (enemiesToDamage) 
+        {
+            IDamagable damagable = enemiesToDamage.transform.GetComponent<IDamagable>();
+            if (damagable != null)
+            {
+                damagable.TakeDamage(attackDamage);
             }
-        } else {
-            Debug.Log("We hit nothing, just like the meaning of our life");
         }
 
     }
 
-    private void OnDrawGizmos() {
+    private void OnDrawGizmosSelected() {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
     }

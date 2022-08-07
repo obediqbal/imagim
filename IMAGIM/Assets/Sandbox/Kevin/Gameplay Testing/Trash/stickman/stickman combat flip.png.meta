@@ -1,28 +1,31 @@
 fileFormatVersion: 2
-guid: 9c9ad43b60be36242905bbf6c98130c3
+guid: 7a2a5a6cafb059443a0eeeafd6009686
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2552055684467771378
-    second: stickman combat_0
+      213: 1654895154747565560
+    second: stickman combat flip_0
   - first:
-      213: 8639837008503970810
-    second: stickman combat_1
+      213: -2503339456700166399
+    second: stickman combat flip_1
   - first:
-      213: 4565133924055600780
-    second: stickman combat_3
+      213: -3892331080887998255
+    second: stickman combat flip_2
   - first:
-      213: 3602762560090863005
-    second: stickman combat_4
+      213: 7260470862525726763
+    second: stickman combat flip_3
   - first:
-      213: -176123262471176082
-    second: stickman combat_5
+      213: 545892653274814291
+    second: stickman combat flip_4
   - first:
-      213: 6501174965013402653
-    second: stickman combat_6
+      213: -7358079463886123661
+    second: stickman combat flip_5
   - first:
-      213: -8103952597702235422
-    second: stickman combat_7
+      213: 8993266642364020415
+    second: stickman combat flip_6
+  - first:
+      213: -7667685466231109877
+    second: stickman combat flip_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -148,11 +151,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: stickman combat_0
+      name: stickman combat flip_0
       rect:
         serializedVersion: 2
-        x: 54
-        y: 570
+        x: 49
+        y: 564
         width: 150
         height: 215
       alignment: 0
@@ -162,17 +165,59 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f7c7b7af19ba6320800000000000000
-      internalID: 2552055684467771378
+      spriteID: 8f56e3f006e57f610800000000000000
+      internalID: 1654895154747565560
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stickman combat_1
+      name: stickman combat flip_1
       rect:
         serializedVersion: 2
-        x: 465
+        x: 411
+        y: 568
+        width: 108
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10fca23070a524dd0800000000000000
+      internalID: -2503339456700166399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stickman combat flip_2
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 570
+        width: 62
+        height: 213
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d8657f1189abf9c0800000000000000
+      internalID: -3892331080887998255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stickman combat flip_4
+      rect:
+        serializedVersion: 2
+        x: 744
         y: 570
         width: 91
         height: 211
@@ -183,20 +228,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: afb1721cbfdd6e770800000000000000
-      internalID: 8639837008503970810
+      spriteID: 357d0f3d976639700800000000000000
+      internalID: 545892653274814291
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stickman combat_3
+      name: stickman combat flip_5
       rect:
         serializedVersion: 2
-        x: 654
+        x: 1096
         y: 570
-        width: 60
-        height: 226
+        width: 151
+        height: 215
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,80 +249,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8e4b67ed1d9a5f30800000000000000
-      internalID: 4565133924055600780
+      spriteID: 37d88fd56b9d2e990800000000000000
+      internalID: -7358079463886123661
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stickman combat_4
+      name: stickman combat flip_6
       rect:
         serializedVersion: 2
-        x: 811
-        y: 569
-        width: 56
-        height: 218
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d95fa4cc5759ff130800000000000000
-      internalID: 3602762560090863005
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stickman combat_5
-      rect:
-        serializedVersion: 2
-        x: 1101
-        y: 564
-        width: 150
-        height: 214
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e6009bf63d84e8df0800000000000000
-      internalID: -176123262471176082
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stickman combat_6
-      rect:
-        serializedVersion: 2
-        x: 265
-        y: 570
-        width: 113
-        height: 213
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d14594c9f20d83a50800000000000000
-      internalID: 6501174965013402653
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stickman combat_7
-      rect:
-        serializedVersion: 2
-        x: 956
+        x: 256
         y: 569
         width: 88
         height: 218
@@ -288,8 +270,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2eaaa598c0af88f80800000000000000
-      internalID: -8103952597702235422
+      spriteID: fb63a74ec508ecc70800000000000000
+      internalID: 8993266642364020415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stickman combat flip_7
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 570
+        width: 111
+        height: 213
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b078edf81b8e69590800000000000000
+      internalID: -7667685466231109877
       vertices: []
       indices: 
       edges: []
