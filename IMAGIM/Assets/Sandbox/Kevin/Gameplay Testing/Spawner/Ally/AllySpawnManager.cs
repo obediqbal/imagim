@@ -1,4 +1,5 @@
 using DKH.InstancePooling;
+using DKH.ResourceSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ public class AllySpawnManager : MonoBehaviour
 {
     [SerializeField] AllyType ally;
     [SerializeField] Transform alliesParent;
+    [SerializeField] Resource fota;
+    [SerializeField] float deployCost;
     public Transform spawnPoint;
     InstancePool _warriors;
     private void Update()
@@ -22,6 +25,14 @@ public class AllySpawnManager : MonoBehaviour
     }
     public void StartSpawning()
     {
-        _warriors.InstantiateFromPool(spawnPoint.position, spawnPoint.rotation);
+        if (fota.GetValue() > deployCost)
+        {
+            _warriors.InstantiateFromPool(spawnPoint.position, spawnPoint.rotation);
+            fota.SetValue(fota.GetValue() - deployCost);
+        }
+        else
+        {
+            Debug.Log("Not enough Fota!");
+        }
     }
 }
