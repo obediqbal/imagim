@@ -42,8 +42,9 @@ public class DialogueTrigger : MonoBehaviour
                     while (curr.Contains("["))
                     {
                         dialogue.Enqueue(special);
-                        special = curr.Substring(0, line.IndexOf("]") + 1);
-                        curr = curr.Substring(line.IndexOf("]"));
+                        Debug.Log(curr);
+                        special = curr.Substring(0, curr.IndexOf("]")+1);
+                        curr = curr.Substring(curr.IndexOf("]")+1);
                     }
                     dialogue.Enqueue(special);
                     dialogue.Enqueue(curr);

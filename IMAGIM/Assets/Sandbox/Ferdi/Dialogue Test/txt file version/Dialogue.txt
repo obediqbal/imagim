@@ -33,7 +33,7 @@
 
 [NAME=???]test
 
-[SETTING=Blue][NAME=Ferdi] testes
+[SETTING=Blue][NAME=Ferdi][CHAR=El Risitas_Kek_left]testes
 
 ini ngetes dialogue kalo pake txt file
 
@@ -47,6 +47,14 @@ buat pemakaiannya di cutscene bakal disesuaiin sama story dan pemikiran cutscene
 
 entah ingame bisa interact buat ada dialog, ato bikin scene khusus buat cutscene
 
+[NAME=null]<b>gon</b> no <i>now italic</i> now bacc
+
+<size=40>now big</size> now bacc
+
+<size=40><b><i>BIG bold italic</i></b></size>
+
 [CHAR=Uhh_Fallen_right]semoga aman
 
 [CHAR=Teriri_Dumb_right]mangga dicoba
+
+[CHAR=null]<b>gon egen</b>
