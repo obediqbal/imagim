@@ -2,6 +2,7 @@ using DKH.SkillSystem;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -55,7 +56,7 @@ public class Player : Unit, ISkillable
         DashHandler();
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            SceneManager.LoadScene(2);
         }
         float skillCooldown = 0;
         foreach (var skillData in skillData.Values)
