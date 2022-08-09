@@ -1,8 +1,12 @@
+using DKH.SkillSystem;
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 
-public class PlayerMovement : Unit
+public class Player : Unit, ISkillable
 {
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float acceleration = 4f;
@@ -16,6 +20,10 @@ public class PlayerMovement : Unit
     [SerializeField] private BoxCollider2D boxCollider;
     private PlayerDash playerDash;
     private bool inDash;
+    Dictionary<SkillBase, SkillData> skillData = new Dictionary<SkillBase, SkillData>();
+    [SerializeField] SkillBase skill;
+    [SerializeField] BUFF buff;
+    [SerializeField] TMP_Text cooldownTimer;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -23,6 +31,12 @@ public class PlayerMovement : Unit
         xScale = transform.localScale.x;
         boxCollider = GetComponent<BoxCollider2D>();
         playerDash = GetComponent<PlayerDash>();
+        DemoAtkBuffData data = (DemoAtkBuffData)GetSkillData(skill);
+        data.buff = buff;
+    }
+    private void Start()
+    {
+        SetMaxHealth(100);
     }
 
     private void Update() {
@@ -31,10 +45,26 @@ public class PlayerMovement : Unit
         if (Input.GetButtonDown("Jump") && isGrounded()) {
             rb.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            ExecuteSkill(skill);
+        }
         AnimationHandler(); 
         FlipPlayer();
         DashHandler();
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+        float skillCooldown = 0;
+        foreach (var skillData in skillData.Values)
+        {
+            ISkillDataCooldown cooldownSkill = (ISkillDataCooldown)skillData;
+            cooldownSkill.Cooldown -= Time.deltaTime;
+            skillCooldown = cooldownSkill.Cooldown;
+        }
+        cooldownTimer.text = (skillCooldown <= 0) ? "Ready" : $"{Mathf.Round(skillCooldown * 10f) / 10f}s";
     }
 
     private void FixedUpdate() {
@@ -76,5 +106,23 @@ public class PlayerMovement : Unit
         }
 
         inDash = playerDash.inDash;
+    }
+
+    public void ExecuteSkill(SkillBase skill)
+    {
+        skill.ExecuteAs(this);
+    }
+
+    public SkillData GetSkillData(SkillBase skill)
+    {
+        SkillData data;
+        if (!skillData.TryGetValue(skill, out data))
+        {
+            // Basically
+            // data = new DemoDebugLogSkillData()
+            data = Activator.CreateInstance(skill.SkillData) as SkillData;
+            skillData.Add(skill, data);
+        }
+        return data;
     }
 }

@@ -244,6 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 6400045724396345858}
   currentHealth: 0
+  fota: {fileID: 11400000, guid: c8fb03c7529bd6440bafb35eee282011, type: 2}
   lockedEnemy: {fileID: 0}
   speed: 8
   attackRange: 1.65

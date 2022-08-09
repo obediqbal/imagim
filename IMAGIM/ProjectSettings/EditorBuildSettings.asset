@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Stage/Stage 0.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Sandbox/Kevin/Gameplay Testing/Scene/GameTesting 1.unity
+    guid: 4e96606480a61854cbcdbc4d14d7b3a6
+  - enabled: 1
+    path: Assets/Sandbox/Kevin/Gameplay Testing/Scene/GameTestingWin.unity
+    guid: 7081513db8c7395498daff00e3d391ea
+  - enabled: 1
+    path: Assets/Sandbox/Kevin/Gameplay Testing/Scene/GameTestingLost.unity
+    guid: 9bec4cab818c905449713ea32f6bd670
   m_configObjects: {}

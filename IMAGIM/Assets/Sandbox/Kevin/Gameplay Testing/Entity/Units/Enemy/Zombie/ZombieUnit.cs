@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DKH.ResourceSystem;
 
 [AddComponentMenu(menuName: "Game Units/Enemy/Zombie/Zombie")]
 public class ZombieUnit : Unit
@@ -10,6 +11,7 @@ public class ZombieUnit : Unit
     public ZombieStateTower TargetTower = new ZombieStateTower();
     public ZombieStateChase TargetClosest = new ZombieStateChase();
     public ZombieStateAttack Attacking = new ZombieStateAttack();
+    [SerializeField] Resource fota;
 
     // Movement and Attack
     public Transform lockedEnemy;
@@ -47,6 +49,7 @@ public class ZombieUnit : Unit
 
         if (currentHealth <= 0) {
             Destroy(gameObject);
+            fota.SetValue(fota.GetValue() + 10);
         }
 
         AnimationHandler();

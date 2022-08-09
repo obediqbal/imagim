@@ -7,14 +7,14 @@ public class PlayerDash : MonoBehaviour
     [HideInInspector] public int dashCharge = 1;
     private Rigidbody2D rb;
     private float gravityScale;
-    private PlayerMovement playerMovement;
+    private Player playerMovement;
     private Animator animator;
     [HideInInspector] public bool inDash = false;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         gravityScale = rb.gravityScale;
-        playerMovement = GetComponent<PlayerMovement>();
+        playerMovement = GetComponent<Player>();
         animator = GetComponent<Animator>();
     }
 

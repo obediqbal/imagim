@@ -25,7 +25,7 @@ public class AllySpawnManager : MonoBehaviour
     }
     public void StartSpawning()
     {
-        if (fota.GetValue() > deployCost)
+        if (fota.GetValue() >= deployCost)
         {
             _warriors.InstantiateFromPool(spawnPoint.position, spawnPoint.rotation);
             fota.SetValue(fota.GetValue() - deployCost);

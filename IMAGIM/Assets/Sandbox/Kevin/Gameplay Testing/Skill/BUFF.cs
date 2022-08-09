@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DKH.SkillSystem;
 
 public class BUFF : MonoBehaviour
 {
@@ -20,10 +21,6 @@ public class BUFF : MonoBehaviour
         if (!buffActive)
         {
             buff.SetActive(false);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            ATKBUFF();
         }
     }
     public void ATKBUFF()
