@@ -6,13 +6,10 @@ using UnityEngine;
 public class WarriorStateTower : WarriorStateManager
 {
     Transform tower;
-    WarriorUnit warrior;
 
-    public override void OnEnter(WarriorUnit _warrior)
+    public override void OnEnter(WarriorUnit warrior)
     {
         tower = GameObject.FindWithTag("EnemyTower").transform;
-        warrior = _warrior;
-        warrior.lockedEnemy = tower;
     }
     public override void Update(WarriorUnit warrior)
     {

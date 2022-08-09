@@ -113,7 +113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1168704334915696964}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.2, y: 0.3, z: 0}
+  m_LocalPosition: {x: -3.6, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4433925344250786270}
@@ -363,12 +363,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 1116097679160634229}
   currentHealth: 0
-  lockedEnemy: {fileID: 0}
   speed: 8
   attackRange: 1.65
   attackDelay: 2
   attackPosition: {fileID: 5888884765379188955}
-  enemiesInChaseRange: []
   chaseRangeCenter: {fileID: 1662970707999811893}
   chaseRangeSize: {x: 35, y: 13.4}
   whatIsEnemy:

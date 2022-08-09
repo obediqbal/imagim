@@ -9,30 +9,52 @@ public class WarriorStateChase : WarriorStateManager
 
     public override void OnEnter(WarriorUnit warrior)
     {
-        AssignTarget(warrior.lockedEnemy);
-    }
-
-    void AssignTarget(Transform _target)
-    {
-        target = _target;
+        
     }
 
     public override void Update(WarriorUnit warrior)
     {
-        if (target != null) 
+        if (!warrior.enemiesInChaseRange.Contains(warrior.lockedEnemy))
         {
-            warrior.ChaseTarget(target);
+            OnTargetExit(warrior);
+        }
+
+        if (warrior.lockedEnemy.transform != null)
+        {
+            warrior.ChaseTarget(warrior.lockedEnemy.transform);
+        }
+    }
+
+    private void OnTargetExit(WarriorUnit warrior)
+    {
+        if (warrior.enemiesInChaseRange.Count > 0)
+        {
+            RaycastHit2D closestWarrior = warrior.enemiesInChaseRange[0];
+            float shortestDist = Mathf.Infinity;
+            if (closestWarrior)
+            {
+                shortestDist = Vector2.Distance(warrior.transform.position, closestWarrior.transform.position);
+            }
+            
+            foreach (RaycastHit2D enemy in warrior.enemiesInChaseRange)
+            {
+                if (enemy)
+                {
+                    if (Vector2.Distance(warrior.transform.position, enemy.transform.position) < shortestDist)
+                    {
+                        closestWarrior = enemy;
+                        shortestDist = Vector2.Distance(warrior.transform.position, enemy.transform.position);
+                    }
+                }
+            }
+
+            warrior.lockedEnemy = closestWarrior;
         }
         else
         {
-            if (warrior.enemiesInChaseRange.Count > 0) 
-            {
-                warrior.lockedEnemy = warrior.enemiesInChaseRange[0];
-                AssignTarget(warrior.lockedEnemy);
-            } else {
-                warrior.SwitchState(warrior.TargetTower);
-            }
+            warrior.SwitchState(warrior.TargetTower);
         }
+        
     }
 
     public override void HandleStateSwitching(WarriorUnit warrior) 
@@ -47,5 +69,4 @@ public class WarriorStateChase : WarriorStateManager
             warrior.SwitchState(warrior.Attacking);
         }
     }
-
 }

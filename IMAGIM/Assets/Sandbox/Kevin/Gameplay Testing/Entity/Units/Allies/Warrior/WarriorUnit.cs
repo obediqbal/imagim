@@ -6,23 +6,24 @@ using TMPro;
 [AddComponentMenu(menuName: "Game Units/Allies/Warrior/Warrior")]
 public class WarriorUnit : Unit
 {
-        // State Machine Related
+    // State Machine Related
     WarriorStateManager currentState;
     public WarriorStateTower TargetTower = new WarriorStateTower();
     public WarriorStateChase TargetClosest = new WarriorStateChase();
     public WarriorStateAttack Attacking = new WarriorStateAttack();
 
     // Movement and Attack
-    public Transform lockedEnemy;
+    public RaycastHit2D lockedEnemy;
     public float speed;
     public float attackRange, attackDelay;
     public Transform attackPosition;
     
     // Chase Mechanism
-    public List<Transform> enemiesInChaseRange = new List<Transform>();
+    public List<RaycastHit2D> enemiesInChaseRange = new List<RaycastHit2D>();
     [SerializeField] private Transform chaseRangeCenter;
     [SerializeField] private Vector2 chaseRangeSize;
     public LayerMask whatIsEnemy; // What this warrior will chase
+    private Transform tower;
 
     // Components Reference
     [SerializeField] Animator animator;
@@ -39,6 +40,13 @@ public class WarriorUnit : Unit
         rb = GetComponent<Rigidbody2D>();
 
         initialScale = transform.localScale;
+        tower = GameObject.FindGameObjectWithTag("EnemyTower").transform;
+
+        // Adapt enemy detection to only detect enemies in front (between this unit and the enemy tower)
+        Vector3 initialChaseRangeCenter = chaseRangeCenter.localPosition; 
+        float toTowerDirectionSign = Mathf.Sign(transform.position.x - tower.position.x);
+        initialChaseRangeCenter.x = toTowerDirectionSign * chaseRangeCenter.localPosition.x;
+        chaseRangeCenter.localPosition = initialChaseRangeCenter;
     }
 
     private void Update()
@@ -80,39 +88,26 @@ public class WarriorUnit : Unit
         // Changing Warrior Orientation
         Vector3 scale = transform.localScale;
         scale.x = directionSign * initialScale.x;
+
+        chaseRangeCenter.parent = null;
         transform.localScale = scale;
+        chaseRangeCenter.parent = transform;
     }
 
     public void CheckEnemiesinChaseRange()
     {
-        enemiesInChaseRange.Clear();
-        RaycastHit2D[] hitEnemies = Physics2D.BoxCastAll(chaseRangeCenter.position, chaseRangeSize, 0, Vector2.zero, 0, whatIsEnemy); 
-        foreach (RaycastHit2D enemy in hitEnemies) 
-        {
-            enemiesInChaseRange.Add(enemy.transform);
-        }
-    }
-
-    public void LockClosest()
-    {
-        if (enemiesInChaseRange.Count > 0)
-        {
-            Transform closest = enemiesInChaseRange[0];
-            foreach (Transform enemy in enemiesInChaseRange)
-            {
-                if (Vector3.Distance(transform.position, enemy.position) < Vector3.Distance(transform.position, closest.position))
-                {
-                    closest = enemy;
-                }
-            }
-            lockedEnemy = closest;
-        }
+        RaycastHit2D[] enemies = Physics2D.BoxCastAll(chaseRangeCenter.position, chaseRangeSize, 0, Vector2.zero, 0, whatIsEnemy); 
+        enemiesInChaseRange = new List<RaycastHit2D>(enemies);
     }
 
     public bool TargetOnAttackRange()
     {
-        RaycastHit2D hitEnemy = Physics2D.CircleCast(attackPosition.position, 0.7f * attackRange, Vector2.zero, 0f, whatIsEnemy);        
-        return GameObject.ReferenceEquals(hitEnemy.transform, lockedEnemy);
+        RaycastHit2D hitEnemy = Physics2D.CircleCast(attackPosition.position, 0.9f * attackRange, Vector2.zero, 0f, whatIsEnemy);
+        if (hitEnemy && lockedEnemy)
+        {
+            return GameObject.ReferenceEquals(hitEnemy.transform.gameObject, lockedEnemy.transform.gameObject);
+        }        
+        return false;
     }
     
     private void AnimationHandler()

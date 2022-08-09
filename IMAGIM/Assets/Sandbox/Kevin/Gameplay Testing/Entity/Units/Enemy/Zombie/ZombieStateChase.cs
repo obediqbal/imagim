@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,30 +10,51 @@ public class ZombieStateChase : ZombieStateManager
 
     public override void OnEnter(ZombieUnit zombie)
     {
-        AssignTarget(zombie.lockedEnemy);
-    }
-
-    void AssignTarget(Transform _target)
-    {
-        target = _target;
+        
     }
 
     public override void Update(ZombieUnit zombie)
     {
-        if (target != null) 
+        if (!zombie.enemiesInChaseRange.Contains(zombie.lockedEnemy))
         {
-            zombie.ChaseTarget(target);
+            OnTargetExit(zombie);
+        }
+
+        if (zombie.lockedEnemy.transform != null)
+        {
+            zombie.ChaseTarget(zombie.lockedEnemy.transform);
+        }
+    }
+
+    private void OnTargetExit(ZombieUnit zombie)
+    {
+        if (zombie.enemiesInChaseRange.Count > 0)
+        {
+            RaycastHit2D closestZombie = zombie.enemiesInChaseRange[0];
+            float shortestDist = Mathf.Infinity;
+            if (closestZombie)
+            {
+                shortestDist = Vector2.Distance(zombie.transform.position, closestZombie.transform.position);
+            }
+            foreach (RaycastHit2D enemy in zombie.enemiesInChaseRange)
+            {
+                if (enemy)
+                {
+                    if (Vector2.Distance(zombie.transform.position, enemy.transform.position) < shortestDist)
+                    {
+                        closestZombie = enemy;
+                        shortestDist = Vector2.Distance(zombie.transform.position, enemy.transform.position);
+                    }
+                }
+            }
+
+            zombie.lockedEnemy = closestZombie;
         }
         else
         {
-            if (zombie.enemiesInChaseRange.Count > 0) 
-            {
-                zombie.lockedEnemy = zombie.enemiesInChaseRange[0];
-                AssignTarget(zombie.lockedEnemy);
-            } else {
-                zombie.SwitchState(zombie.TargetTower);
-            }
+            zombie.SwitchState(zombie.TargetTower);
         }
+        
     }
 
     public override void HandleStateSwitching(ZombieUnit zombie) 

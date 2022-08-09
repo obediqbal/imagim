@@ -6,13 +6,10 @@ using UnityEngine;
 public class ZombieStateTower : ZombieStateManager
 {
     Transform tower;
-    ZombieUnit zombie;
 
-    public override void OnEnter(ZombieUnit _zombie)
+    public override void OnEnter(ZombieUnit zombie)
     {
         tower = GameObject.FindWithTag("AllyTower").transform;
-        zombie = _zombie;
-        zombie.lockedEnemy = tower;
     }
     public override void Update(ZombieUnit zombie)
     {
